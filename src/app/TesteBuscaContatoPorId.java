@@ -7,16 +7,12 @@ import model.Contato;
 
 public class TesteBuscaContatoPorId {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Digite o ID do contato:");
-        Long id = scanner.nextLong();
-
-        try {
+        try (Scanner scanner = new Scanner(System.in)) {
+            Long id = scanner.nextLong();
             ContatoDao dao = new ContatoDao();
             Contato contato = dao.getContatoById(id);
             dao.close();
-
             if (contato != null) {
                 System.out.println("ID: " + contato.getId());
                 System.out.println("Nome: " + contato.getNome());
@@ -27,8 +23,6 @@ public class TesteBuscaContatoPorId {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            scanner.close();
         }
     }
 }

@@ -10,5 +10,4 @@ public class JdbcTeste {
 		System.out.println("Conectado ao Banco Local");
 		con.close();
 	}
-
 }
